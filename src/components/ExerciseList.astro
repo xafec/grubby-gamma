@@ -1,0 +1,58 @@
+---
+import ExerciseItem from "./ExerciseItem";
+import { apiServer, apiToken } from "../utils/api";
+
+type Image = {
+  data: {
+    attributes: {
+      url: string;
+    };
+  };
+};
+
+type Exercise = {
+  id: string;
+  attributes: {
+    Question: string;
+    Answer: string;
+    Number: number;
+    Question_image?: Image | null;
+    Answer_image?: Image | null;
+  };
+};
+
+const response = await fetch(
+  `${apiServer}/api/tasks?populate[Answer_image][fields]=url&populate[Question_image][fields]=url`,
+  {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${apiToken}`,
+    },
+  }
+);
+
+const getFixedList = (data: { data: Exercise[] }) => {
+  return data.data.map((exercise: Exercise) => {
+    const questionImage = exercise.attributes.Question_image
+      ? apiServer + exercise.attributes.Question_image.data.attributes.url
+      : null;
+    const answerImage = exercise.attributes.Answer_image
+      ? apiServer + exercise.attributes.Answer_image.data.attributes.url
+      : null;
+    return {
+      question: exercise.attributes.Question,
+      answer: exercise.attributes.Answer,
+      number: exercise.attributes.Number,
+      questionImage,
+      answerImage,
+    };
+  });
+};
+
+const data = await response.json().then((data) => getFixedList(data));
+---
+
+<div class="flex flex-col gap-4">
+  {data.map((exercise: any) => <ExerciseItem {...exercise} client:load />)}
+</div>

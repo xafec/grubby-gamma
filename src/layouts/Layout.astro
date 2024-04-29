@@ -1,0 +1,41 @@
+---
+import ScrollToTopButton from "../components/ScrollTopBtn";
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <title>Xafec's Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body
+    class="relative bg-neutral-950 text-white selection:bg-purple-200/20 selection:text-gray-400 min-h-screen mb-20"
+  >
+    <div class="pointer-events-none absolute h-screen object-cover">
+      <img
+        src="/background.webp"
+        alt="background"
+        class="fixed h-screen w-screen object-cover opacity-20 blur-3xl"
+      />
+    </div>
+
+    <div class="relative z-10">
+      <slot />
+      <ScrollToTopButton client:load />
+    </div>
+    <style is:global>
+      @font-face {
+        font-family: "mona-sans";
+        src:
+          url("/fonts/Mona-Sans.woff2") format("woff2"),
+          url("/fonts/Mona-Sans.ttf") format("truetype");
+      }
+      html {
+        font-family: "mona-sans", sans-serif;
+      }
+    </style>
+  </body>
+</html>

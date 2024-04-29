@@ -1,0 +1,58 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ExerciseList from "../ExerciseList.astro";
+import SectionContainer from "../SectionContainer.astro";
+import BadgeSocial from "../BadgeSocial.astro";
+import { IconBrandGithub, IconBrandDiscord } from "@tabler/icons-react";
+import CopyEmail from "../CopyEmail";
+---
+
+<Layout>
+  <main class="px-4">
+    <SectionContainer class="pt-20">
+      <h1
+        class="-translate-x-0.5 sm:-translate-x-1 font-black w-full text-4xl lg:text-5xl xl:text-6xl"
+      >
+        Hi, I'm Xafec
+      </h1>
+      <div class="sm:flex items-center sm:space-x-2">
+        <span class="text-xl sm:text-2xl font-semibold"
+          >A passionate web developer</span
+        >
+        <div class="flex gap-2">
+          <a
+            href="https://signal.me/#eu/0ieJruFSNtzs8RgLskTmga9NsYnvB0nVnWTP8nH-yHby8w1kEOtEtryxApfckAKV"
+            target="_blank"
+            rel="noreferrer"
+            class="block w-max sm:inline text-green-500 animate-background-shine cursor-pointer justify-center rounded-md border border-green-500 bg-[linear-gradient(110deg,#22c55e1a,50%,#22c55e66,55%,#22c55e1a)] bg-[length:250%_100%] px-2.5 py-0.5 text-sm"
+          >
+            Want to create something new
+          </a>
+        </div>
+      </div>
+      <div class="mt-6 max-w-[700px] text-lg sm:text-xl">
+        <!-- <p class="text-pretty">
+                    {i18n.PARAGRAPH_DESCRIPTION}
+                </p> -->
+        <div class="mt-2 flex gap-2">
+          <CopyEmail client:load />
+          <BadgeSocial href="https://github.com/xafec/" class="">
+            <span class="hidden sm:block"> GitHub </span>
+            <IconBrandGithub width={16} />
+          </BadgeSocial>
+          <BadgeSocial
+            href="https://discord.com/users/1101222625956597871/"
+            class=""
+          >
+            <span class="hidden sm:block"> Discord </span>
+            <IconBrandDiscord width={16} />
+          </BadgeSocial>
+        </div>
+      </div>
+    </SectionContainer>
+
+    <SectionContainer class="mt-20">
+      <ExerciseList />
+    </SectionContainer>
+  </main>
+</Layout>
