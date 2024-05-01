@@ -31,6 +31,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           script: |
+            sudo npm install -g pm2
             cd /home/user1/grubby-gamma/
             pm2 stop astro-app
             rm -rf dist
