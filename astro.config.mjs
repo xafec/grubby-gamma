@@ -10,9 +10,9 @@ export default defineConfig({
   integrations: [tailwind(), react(), auth()],
   output: "server",
   adapter: node({
-    mode: "standalone"
+    mode: "standalone",
   }),
-  site: "http://95.174.95.253:4321",
+  site: import.meta.env.SITE_URL,
   server: {
     host: "0.0.0.0",
   },
