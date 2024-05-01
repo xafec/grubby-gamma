@@ -11,5 +11,9 @@ export default defineConfig({
   output: "server",
   adapter: node({
     mode: "standalone"
-  })
+  }),
+  site: "http://95.174.95.253:4321",
+  server: {
+    host: "0.0.0.0",
+  },
 });
