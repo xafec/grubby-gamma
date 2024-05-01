@@ -1,0 +1,52 @@
+---
+import { IconLogout, IconDots } from "@tabler/icons-react";
+import { SignOut } from "auth-astro/components";
+import { getSession } from "auth-astro/server";
+
+const session = await getSession(Astro.request);
+---
+
+<div class="relative rounded-md border-2 border-white/20 bg-white/5 p-3">
+  <div class="absolute right-0 top-0 m-3">
+    <button
+      id="menuButton"
+      class="dropdown-button rounded-md border-white/40 bg-white/5 px-1 py-1 text-white/50 transition-all hover:bg-white/10 hover:text-white"
+    >
+      <IconDots width={16} height={16} />
+    </button>
+    <div
+      id="dropdownMenu"
+      class="absolute hidden right-0 z-10 mt-2 w-40 rounded-md border-2 border-white/20 bg-white/5 p-1 shadow-xl backdrop-blur"
+    >
+      <SignOut
+        class="flex w-full items-center justify-between rounded-md px-2.5 py-2 text-sm text-white/50 transition-all hover:bg-red-500/5 hover:text-red-500"
+      >
+        Выход
+        <IconLogout width={16} height={16} />
+      </SignOut>
+    </div>
+  </div>
+  <div class="flex items-center space-x-2">
+    <img
+      class="h-12 w-12 rounded-md"
+      src={session?.user?.image}
+      alt=`foto de perfil de ${session?.user?.name}`
+    />
+    <div class="text-left">
+      <p class="text-sm font-bold">{session?.user?.name}</p>
+      <p class="text-xs text-gray-400">{session?.user?.email}</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menuButton");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    if (!menuButton || !dropdownMenu) return;
+    menuButton.addEventListener("click", () => {
+      dropdownMenu.classList.toggle("open");
+      dropdownMenu.classList.toggle("hidden");
+    });
+  });
+</script>

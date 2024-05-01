@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import SectionAccoutn from "../components/SectionAccount.astro";
+import SectionLogin from "../components/SectionLogin.astro";
+import { getSession } from "auth-astro/server";
+
+const session = await getSession(Astro.request);
+---
+
+<Layout>
+  <main class="px-4">
+    <SectionContainer class="pt-20">
+      {session ? <SectionAccoutn /> : <SectionLogin />}
+    </SectionContainer>
+  </main>
+</Layout>

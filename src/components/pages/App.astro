@@ -24,16 +24,17 @@ import CopyEmail from "../CopyEmail";
             href="https://signal.me/#eu/0ieJruFSNtzs8RgLskTmga9NsYnvB0nVnWTP8nH-yHby8w1kEOtEtryxApfckAKV"
             target="_blank"
             rel="noreferrer"
-            class="block w-max sm:inline text-green-500 animate-background-shine cursor-pointer justify-center rounded-md border border-green-500 bg-[linear-gradient(110deg,#22c55e1a,50%,#22c55e66,55%,#22c55e1a)] bg-[length:250%_100%] px-2.5 py-0.5 text-sm"
+            class="block translate-y-[2px] w-max sm:inline text-green-500 animate-background-shine cursor-pointer justify-center rounded-md border border-green-500 bg-[linear-gradient(110deg,#22c55e1a,50%,#22c55e66,55%,#22c55e1a)] bg-[length:250%_100%] px-2.5 py-0.5 text-sm"
           >
             Want to create something new
           </a>
         </div>
       </div>
       <div class="mt-6 max-w-[700px] text-lg sm:text-xl">
-        <!-- <p class="text-pretty">
-                    {i18n.PARAGRAPH_DESCRIPTION}
-                </p> -->
+        <p class="text-pretty">
+          With a fresh and modern perspective, ready to face challenges with
+          creativity and determination
+        </p>
         <div class="mt-2 flex gap-2">
           <CopyEmail client:load />
           <BadgeSocial href="https://github.com/xafec/" class="">
@@ -46,6 +47,9 @@ import CopyEmail from "../CopyEmail";
           >
             <span class="hidden sm:block"> Discord </span>
             <IconBrandDiscord width={16} />
+          </BadgeSocial>
+          <BadgeSocial href="/auth" class="">
+            <span class="hidden sm:block"> Authorization Page </span>
           </BadgeSocial>
         </div>
       </div>
